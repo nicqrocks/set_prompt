@@ -1,1 +1,2 @@
 #Use ';;;' as the seperator or items.
+test;;;COLOR:bold,green;;;username;;;LIT:@;;;hostname;;;COLOR:bold,blue;;;LIT: ;;;curdir;;;LIT: $;;;COLOR:normal,white
