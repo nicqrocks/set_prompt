@@ -28,15 +28,20 @@ fi
 #Make a function to output the help options
 print_help()
 {
-    echo "USAGE: setprompt [-h or --help] [-c or --convert] [NAME OF PROMPT]"
+    echo "USAGE: setprompt [-h or --help] [-c or --convert] [-l or --list] [NAME OF PROMPT]"
     echo ""
     echo "  -h/--help               Display this help printout."
+    echo ""
+    echo "  -l/--list               This will show the names of the different"
+    echo "                          prompts that are in the conv_prompt file."
+    echo ""
     echo "  -c/--convert            Using this with no options will make"
     echo "                          this script convert the 'prompts' file"
     echo "                          into a useable 'PS1' variable."
     echo ""
     echo "The name of the prompt should be the first item of each line"
     echo "in the $storage/prompt file."
+    echo ""
     exit 0
 }
 
