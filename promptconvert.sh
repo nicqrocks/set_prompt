@@ -60,6 +60,11 @@ do
         "LIT:"*)
             appendfile "$args"
             ;;
+         #Add a blank space to the prompt line. The LIT feature
+         #does not handle a blank space well.
+         "space"|"Space")
+            appendfile ' '
+            ;;
         #Git repo integration and commands
         "GIT:"*)
             case "$args" in
@@ -250,7 +255,7 @@ do
             ;;
         esac
     done
-    
+
     #Add a blank line at the end of the cycle, so that the prompts do not
     #interfere with each other.
     echo "" >> $storage/conv_prompt
