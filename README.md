@@ -12,7 +12,7 @@ user's needs. This script should not just set the PS1 variable from
 a file, but also provide some tools to make the creation of prompts
 easier to understand.
 
-Installation
+#Installation
 
   To install this script, please put the contents of the folder into
 your path. On the first run of the script, it will check the user's
@@ -29,9 +29,11 @@ a machine. This will use the '/usr/local/bin' directory to store the
 script in the user's path. If you do not want it there, change the
 'place' variable below to where you want it.
 
+```bash
 #Open terminal/console and cd into the directory this downloaded to
 chmod +x setprompt.sh promptconvert.sh
 place='/usr/local/bin'
 sudo cp setprompt.sh $place/setpromt
 sudo promptconvert.sh $place/promptconvert.sh
 sudo sample_prompts $place/sample_prompts
+```
