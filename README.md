@@ -34,6 +34,6 @@ script in the user's path. If you do not want it there, change the
 chmod +x setprompt.sh promptconvert.sh
 place='/usr/local/bin'
 sudo cp setprompt.sh $place/setpromt
-sudo promptconvert.sh $place/promptconvert.sh
-sudo sample_prompts $place/sample_prompts
+sudo cp promptconvert.sh $place/promptconvert.sh
+sudo cp sample_prompts $place/sample_prompts
 ```
