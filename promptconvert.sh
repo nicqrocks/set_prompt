@@ -14,14 +14,23 @@ if [ ! -e $storage/conv_prompt ]; then
 else
     echo "The 'conv_prompt' file currently exists. This one will have a"
     echo "backup made of it. WARNING THIS WILL OVERWRITE A PREVIOUS"
-    echo "BACKUP IF IT EXISTS. There will be a 15 second delay before the"
-    echo "backup happens, use this time to kill the current process with"
-    echo "control-c and decide what to do with the file."
-    sleep 16
-    echo "Backing up the file..."
-    mv $storage/conv_prompt $storage/conv_prompt.bak
-    sleep 1
-    touch $storage/conv_prompt
+    echo "BACKUP IF IT EXISTS. Are you sure you want to continue?"
+    echo "yes / no"
+    read answer
+    #Check if $answer is 'yes' or 'no'
+    while [ "$answer" != "yes" ] && [ "$answer" != "no" ]; do
+        smoothOut "Please choose only 'yes' or 'no' as the answer."
+        read answer
+    done
+    if [ "$answer" == "yes" ]; then
+        echo "Backing up the file..."
+        mv $storage/conv_prompt $storage/conv_prompt.bak
+        sleep 1
+        touch $storage/conv_prompt
+    else
+        echo "Exiting..."
+        exit 1
+    fi
 fi
 
 echo "Converting the file to something that the PS1 variable can use..."

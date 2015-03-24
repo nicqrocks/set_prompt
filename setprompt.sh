@@ -1,28 +1,9 @@
 #!/bin/bash
 
-#Begin by checking if the preference directory exists. This file will be the location
-#that the different prompts are stored in.
+#Set variables for where the files and the folders are located so that
+#it can be easily changed if needed.
 storage="$HOME/.stored_prompts"
 convert='promptconvert.sh'
-
-if [ ! -d $storage ]; then
-    if [ ! -e $storage ]; then
-        echo "The '~/.stored_prompts' directory does not exist. Creating a new one..."
-        mkdir $storage
-        echo "Moving the sample prompts file into that location..."
-        if [ -e sample_prompts ]; then
-            cp sample_prompts $storage/prompts
-        else
-            echo "'sample_prompts' file missing, making blank prompts file instead..."
-            touch $storage/prompts
-        fi
-    else
-        echo "The '~/.stored_prompts' file should be a directory, not a file."
-        echo "If you remove it and run this again, it will make the directory"
-        echo "and make a 'prompts' file in there for you."
-        exit 3
-    fi
-fi
 
 
 #Make a function to output the help options
@@ -42,7 +23,7 @@ print_help()
     echo "The name of the prompt should be the first item of each line"
     echo "in the $storage/prompt file."
     echo ""
-    exit 0
+    return 0
 }
 
 #Make a function to list the names of all of the prompts.
@@ -54,7 +35,7 @@ list_names()
         echo "The 'conv_promt' file that contains the prompts does not"
         echo "exist. Re-run this with the flag '-c' or '--convert' to"
         echo "convert the 'prompts' file into the 'conv_promt' file."
-        exit 3
+        return 3
     fi
     
     #Go through the file and display every name
@@ -63,7 +44,7 @@ list_names()
     do
         head -$i $storage/conv_prompt | tail -1 | awk -F ';;;' '{print $1}'
     done
-    exit 0
+    return 0
 }
 
 
@@ -83,7 +64,7 @@ do
     #PS1 prompt that will be stored in 'conv_prompt'
     "-c"|"--convert")
         /usr/local/bin/promptconvert.sh
-        exit 0
+        return 0
         ;;
     "-l"|"--list")
         list_names
@@ -114,11 +95,11 @@ done
 
 if [ "$matchnum" != "1" ]; then
     echo "ERROR: There are $matchnum lines that match the name ${!optnum}."
-    exit 1
+    return 1
 else
     PS1=`head -n $line $storage/conv_prompt | tail -n 1 | awk -F ';;;' '{print $2}'`
     export PS1
     echo $PS1
 fi
 #exit
-exit 0
+return 0

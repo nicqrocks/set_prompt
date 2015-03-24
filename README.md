@@ -1,5 +1,6 @@
 # set_prompt
-Set the prompt (PS1 variable) to what ever is needed at the time.
+Be able to dynamicly change the bash prompt (PS1 variable) to
+something more useful at any time.
 
   Most of the time a person would just use one prompt for the entire
 terminal session. The point of this script is to be able to change
@@ -14,26 +15,20 @@ easier to understand.
 
 #Installation
 
-  To install this script, please put the contents of the folder into
-your path. On the first run of the script, it will check the user's
-home directory for the folder '~/.stored_prompts'. If the directory
-is missing, it will create one for you and place the 'sample_prompts'
+  To install the script simply run the install script as an admin
+or root. This will take care of just about everything for you. The
+install script will by default install to /usr/local/bin if you would
+like to change this directory then say so in the top portion of the
+install script by changing the value of the 'loc' variable.
+
+  On the first run of the script, it will check the user's home
+directory for the folder '~/.stored_prompts'. If the directory is
+missing, it will create one for you and place the 'sample_prompts'
 file in that location, renaming it to 'prompts'. If this file is not
 in the same folder as the 'setprompt' file, then it will just place
 a blank file in it's place.
 
-  Keep in mind that both the 'setprompt' file and the 'promptconvert'
-file need to be in the path, otherwise the script will fail. The
-following is a sample of how a person would install the script on
-a machine. This will use the '/usr/local/bin' directory to store the
-script in the user's path. If you do not want it there, change the
-'place' variable below to where you want it.
+#customizing the Prompts
 
-```bash
-#Open terminal/console and cd into the directory this downloaded to
-chmod +x setprompt.sh promptconvert.sh
-place='/usr/local/bin'
-sudo cp setprompt.sh $place/setpromt
-sudo cp promptconvert.sh $place/promptconvert.sh
-sudo cp sample_prompts $place/sample_prompts
-```
+  To make the different prompts, and to make them easier to write
+there is a file in the ~/.stored_prompts folder called 'prompts'
