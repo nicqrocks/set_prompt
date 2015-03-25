@@ -8,7 +8,9 @@ echo "Install location set to $loc"
 sleep 2
 
 #Check if the user running this script is root or admin
-if [ `whoami` != "root" ] || [ `whoami` != "admin" ]; then
+usr=`whoami`
+if [ "$usr" != "root" ] && [ "$usr" != "admin" ]; then
+    echo "Running script as `whoami`"
     echo "Please run this script as an administrator or root."
     exit 1
 fi
