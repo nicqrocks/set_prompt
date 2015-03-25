@@ -43,16 +43,17 @@ chmod 755 setprompt.sh promptconvert.sh
 
 #Move the scripts to the install location.
 echo "Moving 'setprompt.sh' to $loc/setprompt..."
-mv setprompt.sh $loc/setprompt
+mv setprompt.sh $loc/setprompt.sh
 echo "Moving 'promptconvert.sh' to $loc/promptconvert.sh..."
 mv promptconvert.sh $loc/promptconvert.sh
 
 #Add an alias to the .bashrc file that will make the script
 #run in the current shell, not a new one.
 if [ -e "~/.bashrc" ]; then
+    echo "Add alias to the .bashrc..."
     echo "" >>$HOME/.bashrc
     echo "#Add an alias to run the 'setprompt' script in the current shell." >>$HOME/.bashrc
-    echo "alias setprompt='. $loc/setprompt'" >>$HOME/.bashrc
+    echo "alias setprompt='. $loc/setprompt.sh'" >>$HOME/.bashrc
 fi
 
 #Done
