@@ -23,7 +23,6 @@ print_help()
     echo "The name of the prompt should be the first item of each line"
     echo "in the $storage/prompt file."
     echo ""
-    return 0
 }
 
 #Make a function to list the names of all of the prompts.
@@ -59,6 +58,7 @@ do
     #print out the help options
     "-h"|"--help")
         print_help
+        return 0
         ;;
     #Tell the script to convert the syntax of the 'prompts' file into an actual
     #PS1 prompt that will be stored in 'conv_prompt'
@@ -68,6 +68,7 @@ do
         ;;
     "-l"|"--list")
         list_names
+        return 0
         ;;
     esac
 #add one to 'optnum'
