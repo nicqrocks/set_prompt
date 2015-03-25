@@ -53,6 +53,7 @@ if [ -e "~/.bashrc" ]; then
     echo "" >>$HOME/.bashrc
     echo "#Add an alias to run the 'setprompt' script in the current shell." >>$HOME/.bashrc
     echo "alias setprompt='. $loc/setprompt'" >>$HOME/.bashrc
+fi
 
 #Done
 echo "Done"
