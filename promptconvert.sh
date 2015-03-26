@@ -89,7 +89,7 @@ do
             ;;
         #Execute a string of commands prefixed by 'EXE:'
         "EXE:"*)
-            appendfile "$(`echo $i | cut -d ':' -f 2-`)"
+            appendfile '$('"`echo $i | cut -d ':' -f 2-`"')'
             ;;
         #Determine what to change the color to
         "COLOR:"*)

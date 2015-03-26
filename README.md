@@ -1,17 +1,17 @@
 # set_prompt
-Be able to dynamicly change the bash prompt (PS1 variable) to
-something more useful at any time.
+Be able to dynamically change the bash prompt (PS1 variable) to
+something more useful to the user depending on what they are doing.
 
   Most of the time a person would just use one prompt for the entire
 terminal session. The point of this script is to be able to change
-the prompt of a UNIX/Linux terminal to something more useful
-depending on where the user is and what they are doing.
+the prompt of a UNIX/Linux terminal to something more useful to the
+user, and be able to do so easily.
 
-  The different prompts will actually be stored in a dot file in the
+  The different prompts will actually be stored in a file in the
 user's home directory, and can be changed or expanded to fit the
 user's needs. This script should not just set the PS1 variable from
 a file, but also provide some tools to make the creation of prompts
-easier to understand.
+easier to understand and do without constantly looking up the syntax.
 
 #Installation
 
@@ -31,4 +31,15 @@ a blank file in it's place.
 #customizing the Prompts
 
   To make the different prompts, and to make them easier to write
-there is a file in the ~/.stored_prompts folder called 'prompts'
+there is a file in the ~/.stored_prompts folder called 'prompts'.
+This file holds the outline for each prompt that is written in a
+certain notation to be read by the script, take a look at the
+'sample_prompts' file for an example. Each part of the 'prompts'
+file is separated by three semicolons ';;;'. This is the delimiter
+that tells the script where to separate the entries, so please try
+to avoid using that string of characters in the prompt.
+
+   There are several key words that can be used to make the prompts
+easily. More will be added depending on complexity and demand.
+
+The current key words are:
