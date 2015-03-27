@@ -83,7 +83,7 @@ do
                 ;;
             #Return the current status of the current repository
             "stat"*)
-                appendfile '$(git status -s)'
+                appendfile '$(git status --porcelain)'
                 ;;
             esac
             ;;

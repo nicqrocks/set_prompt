@@ -43,3 +43,72 @@ to avoid using that string of characters in the prompt.
 easily. More will be added depending on complexity and demand.
 
 The current key words are:
+
+LIT:
+   This keyword is used to directly send words and other characters
+   to the prompt. This can also be used to send commands into the
+   prompt directly without using the keywords, or even use commands
+   that have not been implemented yet. NOTE - there is a bug in the
+   script that makes backslashes '\\' not be interpreted correctly.
+   If using a backslash with the 'LIT' command, please use two in a
+   row.
+
+   input: LIT:Hello there!
+   output: Hello there!
+
+space
+   This keyword is used to insert a single blank space into the
+   prompt. This cannot be done with the 'LIT' key word because a
+   space is seen as a separator by awk. This is only for when there
+   is a single space needed. If it is going to be followed by a
+   string, the 'LIT' command will work.
+
+   input: space
+   output: (space character)
+
+GIT:
+   This is a "base" key word that is used to call other key words.
+   In this case, it is used to call commands that have to do with
+   the program 'git'.
+
+   cur branch
+      This key word is used in conjunction with the 'GIT:' keyword
+      and is used to display the current branch that the user is
+      in for the current git repo.
+
+      input: GIT:cur branch
+      output: Master (or whatever branch is currently active)
+
+   status
+      Display the current status of the active git repo, this is the
+      equivalent command of 'git status --porcelain'.
+
+      input: GIT:status
+      output: file1 -> file2
+
+EXE:
+   This key word is designed to run a certain command in the prompt.
+   The command can be any bash command, but be careful what it is,
+   because it will be run overtime.
+
+   input: EXE:echo "Hello!"
+   output: Hello!
+
+COLOR:
+   This key word is the one to change the color of all of the text
+   after it is called. This call will be followed by the style of
+   the font and then the color. For example, 'COLOR:normal,blue'
+
+   normal
+      This setting will make the text appear in the standard format.
+      This is useful for the ending of the prompt to set the regular
+      text back to a standard font style.
+
+   bold
+      This is fairly self-explanitory, it is just bold.
+
+   underline
+      Make the following text underlined.
+
+   background
+      Make the font have a background color to it.
