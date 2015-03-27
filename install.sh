@@ -43,18 +43,44 @@ chmod 755 setprompt.sh promptconvert.sh
 
 #Move the scripts to the install location.
 echo "Moving 'setprompt.sh' to $loc/setprompt..."
-mv setprompt.sh $loc/setprompt.sh
+cp setprompt.sh $loc/setprompt.sh
 echo "Moving 'promptconvert.sh' to $loc/promptconvert.sh..."
-mv promptconvert.sh $loc/promptconvert.sh
+cp promptconvert.sh $loc/promptconvert.sh
 
-#Add an alias to the .bashrc file that will make the script
-#run in the current shell, not a new one.
-if [ -e "~/.bashrc" ]; then
-    echo "Add alias to the .bashrc..."
-    echo "" >>$HOME/.bashrc
-    echo "#Add an alias to run the 'setprompt' script in the current shell." >>$HOME/.bashrc
-    echo "alias setprompt='. $loc/setprompt.sh'" >>$HOME/.bashrc
-fi
+#Add an alias in an alias file or something like '.bashrc' that will make the
+#script run in the current shell, not a new one using the '.' command.
+
+for file in `ls -a $HOME`
+do
+    case "$file" in
+    ".alias")
+        aliasfile="$HOME/.alias"
+        ;;
+    ".bash_profile")
+        aliasfile="$HOME/.bash_profile"
+        ;;
+    ".bash_login")
+        aliasfile="$HOME/.bash_login"
+        ;;
+    ".bashrc")
+        aliasfile="$HOME/.bashrc"
+        ;;
+    ".profile")
+        aliasfile="$HOME/.profile"
+        ;;
+    *)
+	echo "A suitable file to place the alias was not found."
+	echo "Please specify the full path."
+	read aliasfile
+	;;
+    esac
+done
+
+
+echo "Adding alias to $aliasfile..."
+echo "" >>$aliasfile
+echo "#Add an alias to run the 'setprompt' script in the current shell." >>$aliasfile
+echo "alias setprompt='. $loc/setprompt.sh'" >>$aliasfile
 
 #Done
 echo "Done"
