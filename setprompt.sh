@@ -3,7 +3,7 @@
 #Set variables for where the files and the folders are located so that
 #it can be easily changed if needed.
 storage="$HOME/.stored_prompts"
-convert='promptconvert.sh'
+convert="promptconvert.sh"
 
 
 #Make a function to output the help options
@@ -36,7 +36,7 @@ list_names()
         echo "convert the 'prompts' file into the 'conv_promt' file."
         return 3
     fi
-    
+
     #Go through the file and display every name
     totallines=`cat $storage/conv_prompt | wc -l`
     for i in `seq 1 $totallines`

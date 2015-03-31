@@ -111,4 +111,30 @@ COLOR:
       Make the following text underlined.
 
    background
-      Make the font have a background color to it.
+      This option will highlight the background around the text.
+
+   Terminal Colors
+      The color that you want the font to be fill come after the
+      style choice like in the example above. The colors available
+      are: black, red, green, yellow, blue, purple, cyan, and white.
+      Prefixing one of these with 'light-' will give you the bright
+      or light version of that color, example 'COLOR:bold,light-red'
+date
+   Print out the current date into the prompt.
+
+   input: date
+   output: Mon Mar 30 08:02:59 EDT 2015
+
+host
+   Adds the name of the machine that the user is currently logged into.
+   Alternative names for this are 'computername' and 'machine'.
+
+   input: host
+   output: nic-linux-work
+
+job
+   This key word will display the current number of jobs managed by
+   the current shell.
+
+   input: job
+   output:

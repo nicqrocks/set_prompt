@@ -52,30 +52,44 @@ cp promptconvert.sh $loc/promptconvert.sh
 
 for file in `ls -a $HOME`
 do
-    case "$file" in
-    ".alias")
-        aliasfile="$HOME/.alias"
-        ;;
-    ".bash_profile")
-        aliasfile="$HOME/.bash_profile"
-        ;;
-    ".bash_login")
-        aliasfile="$HOME/.bash_login"
-        ;;
-    ".bashrc")
-        aliasfile="$HOME/.bashrc"
-        ;;
-    ".profile")
-        aliasfile="$HOME/.profile"
-        ;;
-    *)
-	echo "A suitable file to place the alias was not found."
-	echo "Please specify the full path."
-	read aliasfile
-	;;
-    esac
+   case "$file" in
+   ".alias")
+      aliasfile="$HOME/.alias"
+      found=true
+      break
+      ;;
+   ".bash_profile")
+      aliasfile="$HOME/.bash_profile"
+      found=true
+      break
+      ;;
+   ".bash_login")
+      aliasfile="$HOME/.bash_login"
+      found=true
+      break
+      ;;
+   ".bashrc")
+      aliasfile="$HOME/.bashrc"
+      found=true
+      break
+      ;;
+   ".profile")
+      aliasfile="$HOME/.profile"
+      found=true
+      break
+      ;;
+   *)
+      found=false
+      ;;
+   esac
 done
 
+if [ $found == false ]; then
+   echo "A suitable file to place the alias was not found."
+   echo "Please specify the full path to a location you want"
+   echo "the files to be installed to."
+   read aliasfile
+fi
 
 echo "Adding alias to $aliasfile..."
 echo "" >>$aliasfile
