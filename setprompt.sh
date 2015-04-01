@@ -3,7 +3,7 @@
 #Set variables for where the files and the folders are located so that
 #it can be easily changed if needed.
 storage="$HOME/.stored_prompts"
-convert="promptconvert.sh"
+convert=changethislocation
 
 
 #Make a function to output the help options
