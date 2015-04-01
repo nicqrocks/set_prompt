@@ -41,6 +41,10 @@ fi
 echo "Setting permissions..."
 chmod 755 setprompt.sh promptconvert.sh
 
+#Change where the 'setprompt.sh' is going to call the 'promptconvert.sh'
+#file from. This make it so it can be installed anywhere, not just the path
+sed -i 's/changethislocation/$loc/g' setprompt.sh
+
 #Move the scripts to the install location.
 echo "Moving 'setprompt.sh' to $loc/setprompt..."
 cp setprompt.sh $loc/setprompt.sh
