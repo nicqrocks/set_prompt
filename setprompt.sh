@@ -63,7 +63,7 @@ do
     #Tell the script to convert the syntax of the 'prompts' file into an actual
     #PS1 prompt that will be stored in 'conv_prompt'
     "-c"|"--convert")
-        /usr/local/bin/promptconvert.sh
+        $convert/promptconvert.sh
         return 0
         ;;
     "-l"|"--list")
