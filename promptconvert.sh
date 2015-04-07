@@ -85,6 +85,12 @@ do
             "stat"*)
                 appendfile '$(git status --porcelain)'
                 ;;
+             *)
+                echo "ERROR: $i not understood."
+                echo "This error was found in a 'GIT:' declaration."
+                echo "Valid options for 'GIT': 'curbranch', and 'status'."
+                exit 2
+                ;;
             esac
             ;;
         #Execute a string of commands prefixed by 'EXE:'
@@ -110,7 +116,7 @@ do
             *)
                 echo "ERROR: $i not understood."
                 echo "This error was found in a 'COLOR:style' declaration."
-                echo "Valid options for style: bold, normal, underline, and background."
+                echo "Valid options for style: 'bold', 'normal', 'underline', and 'background'."
                 exit 2
                 ;;
             esac
@@ -167,10 +173,9 @@ do
             *)
                 echo "ERROR: $i not understood."
                 echo "This error was found in a 'COLOR:colors' declaration."
-                echo "Valid options for style: black, red, green, yellow, blue,"
-                echo "purple, cyan, and white. Prefixing one of these with"
-                echo "'light-' will give you the bright or light version of"
-                echo "that color."
+                echo "Valid options for style: 'black', 'red', 'green', 'yellow', 'blue',"
+                echo "'purple', 'cyan', and 'white'. Prefixing one of these with"
+                echo "'light-' will give you the bright or light version of that color."
                 exit 2
                 ;;
             esac
@@ -213,7 +218,7 @@ do
             *)
                 echo "ERROR: $i not understood."
                 echo "This error was found in a 'time' declaration."
-                echo "Valid options for time: 24, 12, normal"
+                echo "Valid options for time: '24', '12', and 'normal'."
                 exit 2
                 ;;
             esac
