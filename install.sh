@@ -44,7 +44,19 @@ chmod 755 setprompt.sh promptconvert.sh
 #Change where the 'setprompt.sh' is going to call the 'promptconvert.sh'
 #file from. This make it so it can be installed anywhere, not just the path
 echo "Changing where the 'setprompt.sh' file looks for the 'promptconvert.sh' file."
-sed -i 's,changethislocation,'"$loc"',' setprompt.sh
+os=`uname -s`
+if [ "$os" == "Linux" ]; then
+   sed -i 's,changethislocation,'"$loc"',' setprompt.sh
+elif [ "$os" == "Darwin" ]; then
+   sed -i '.bak' 's,changethislocation,'"$loc"',' setprompt.sh
+else
+   echo "I'm sorry, but this OS is not supported yet. If possible, please"
+   echo "clone the Github repo and add the commands needed to make this version"
+   echo "work correctly. If nothing is needed, and all of the commands that are"
+   echo "currently in this script will work on this system, please add an 'issue'"
+   echo "to the Github repo, and this will be sorted out soon."
+   exit 3
+fi
 
 #Move the scripts to the install location.
 echo "Moving 'setprompt.sh' to $loc/setprompt..."
