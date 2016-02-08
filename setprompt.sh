@@ -47,6 +47,13 @@ list_names()
 }
 
 
+#Print out a help message if no args are given.
+if [[ $# < 1 ]]; then
+    print_help
+    exit 0
+fi
+
+
 #Use the variable 'optnum' to cycle through the different options given in the script.
 #'optnum' should be initially be set to the value of '1', this way when it is used
 #as '!optnum' bash will see it as '$1'. The while loop will keep going until the
