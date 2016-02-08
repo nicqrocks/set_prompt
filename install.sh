@@ -2,24 +2,18 @@
 
 #set variables so that things can be changed easily.
 #Install location that can be found in $PATH:
-loc='/usr/local/bin'
+usr=`whoami`
+loc='/home/$usr/bin'
 echo "Install location set to $loc"
 #Sleep 2 seconds just in case.
-sleep 2
-
-#Check if the user running this script is root or admin
-usr=`whoami`
-if [ "$usr" != "root" ] && [ "$usr" != "admin" ]; then
-    echo "Running script as `whoami`"
-    echo "Please run this script as an administrator or root."
-    exit 1
-fi
+sleep 3
 
 #Check if the preference directory exists. This will be the location
 #that the different prompts are stored in, along with everything else.
+storage='~/.stored_prompts'
 if [ ! -d $storage ]; then
     if [ ! -e $storage ]; then
-        echo "The '~/.stored_prompts' directory does not exist. Creating a new one..."
+        echo "The '$storage' directory does not exist. Creating a new one..."
         mkdir $storage
         echo "Moving the 'sample_prompts' file into that location..."
         if [ -e sample_prompts ]; then
@@ -30,7 +24,7 @@ if [ ! -d $storage ]; then
             touch $storage/prompts
         fi
     else
-        echo "The '~/.stored_prompts' file should be a directory, not a file."
+        echo "The '$storage' file should be a directory, not a file."
         echo "If you remove it and run this again, it will make the directory"
         echo "and make a 'prompts' file in there for you."
         exit 2
