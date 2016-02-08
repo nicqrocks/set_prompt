@@ -19,7 +19,7 @@ else
     read answer
     #Check if $answer is 'yes' or 'no'
     while [ "$answer" != "yes" ] && [ "$answer" != "no" ]; do
-        smoothOut "Please choose only 'yes' or 'no' as the answer."
+        echo "Please choose only 'yes' or 'no' as the answer."
         read answer
     done
     if [ "$answer" == "yes" ]; then
